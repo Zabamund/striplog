@@ -61,7 +61,8 @@ class Interval(object):
                  data=None,
                  components=None,
                  max_component=1,
-                 abbreviations=False):
+                 abbreviations=False,
+                 name=None):
 
         if not isinstance(top, Position):
             top = Position(middle=top)
@@ -69,6 +70,9 @@ class Interval(object):
         if base is not None:
             if not isinstance(base, Position):
                 base = Position(middle=base)
+
+        if name:
+            self.name = name
 
         self.top = top
         if base is not None:
@@ -162,7 +166,7 @@ class Interval(object):
         """
         Jupyter Notebook magic repr function.
         """
-        items = ['top', 'primary', 'summary', 'description', 'data', 'base']
+        items = ['name', 'top', 'primary', 'summary', 'description', 'data', 'base']
         rows = ''
         row = '<tr>{row1}<td><strong>{e}</strong></td><td>{v}</td></tr>'
         style = 'width:2em; background-color:#DDDDDD'
